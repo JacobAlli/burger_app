@@ -1,5 +1,5 @@
 // require our view engine
-var handlebars = require('handlebars');
+var handlebars = require('express-handlebars');
 
 //require path for server files
 var path = require('path');
@@ -15,9 +15,8 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 
 //configuration stuff
-app.set('view engine', 'handlebars')
-
-app.set('views', path.join(__dirname, 'views'));
+app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 //middleware stuff
 app.use(express.static(path.join(__dirname, 'public')));
@@ -28,10 +27,12 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //routing stuff
 
-app.use(require('./routes'));
+app.use('/', require('./routes'));
 
 app.listen(port, function() {
 	console.log("app is listening on port " + port);
 });
+
+module.exports = app;
 
 

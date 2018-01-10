@@ -1,0 +1,63 @@
+<div class="ui grid stackable center aligned">
+    <div class="one column row">
+
+        <div class="head">
+            <h1>Eat Da Burger!</h1>
+
+            <div class="one column row">
+                <div class="five wide column">
+                    <form class="ui form" action="/add" method="POST">
+                        <input class="six wide field inverted" type="text" name="name" placeholder="add a burger"><br>
+                        <br>
+                        <input class="ui submit button six wide field" type="submit" value="ADD">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+
+<br><br><br></br></br><br><br>
+
+    </div>
+    <div class="three column row">
+
+            <div class="seven wide column">
+                <h2>BURGER LIST</h2>
+                <p>Click on the burgers to eat them</p>
+                <hr><br>
+                <div class="ui two cards">
+                {{#each burgers}}
+                {{#unless eaten}}
+                      <a class="card">
+                            <form class="burger_list_form" action="/eat" method="POST">
+                                <input type="hidden" name="id" value="{{id}}">
+                                <input value="{{name}}" type="submit">
+                            </form>
+                      </a>
+                {{/unless}}
+                {{/each}}
+                </div>
+            </div>
+
+            <div class="one wide column"></div>
+
+            <div class="seven wide column">
+                <h2>EATEN BURGERS</h2>
+                <p>Here's the burgers you've eaten</p>
+                <hr><br>
+                <div class="ui two cards">
+                {{#each burgers}}
+                {{#if eaten}}
+                      <a class="card">
+                           <p>{{name}}</p>
+                      </a>
+                {{/if}}
+                {{/each}}
+                </div>
+            </div>
+
+</div>
+
+
+
