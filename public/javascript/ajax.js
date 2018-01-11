@@ -10,7 +10,7 @@
 //         dataType: 'jsonp',
 //         'Content-Type': 'application/json',
 //         success: function(data){
-//             console.log(data);
+//             console.olg(data);
 //         },
 //     });
 
